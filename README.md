@@ -2,9 +2,11 @@
 <h5 align="center">Super simple and secure way to encrypt and decrypt data using the AES-256-GCM algorithm in Node.js. It leverages the crypto module to automatically manage cryptographic salts, initialization vectors (IVs), and keys. Ideal for applications requiring secure data storage or transmission.</h5>
 <br />
 <p align="center">
-  <a href="https://github.com/hevar/symmetrical-encryption/actions/workflows/test-and-release.yml">
-    <img alt="Build states" src="https://github.com/hevar/symmetrical-encryption/actions/workflows/test-and-release.yml/badge.svg?branch=master">
+  <a href="https://github.com/hevar/symmetrical-encryption/actions/workflows/publish.yml">
+    <img alt="Build states" src="https://github.com/hevar/symmetrical-encryption/actions/workflows/publish.yml/badge.svg?branch=master">
   </a>
+
+    
 
 
   <p align="center">
