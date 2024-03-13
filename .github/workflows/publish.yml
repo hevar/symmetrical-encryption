@@ -16,14 +16,6 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
-      - name: tests GITHUB_TOKEN
-        run: echo ${{ secrets.GITHUB_TOKEN }}
-      - name: tests GH_TOKEN
-        run: echo ${{ secrets.GH_TOKEN }}
-      - name: test NPM_TOKEN
-        run: echo ${{ secrets.NPM_TOKEN }}
-
-
       - name: Checkout
         uses: actions/checkout@v4
 
