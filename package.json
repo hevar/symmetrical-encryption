@@ -1,6 +1,6 @@
 {
     "name": "symmetrical-encryption",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "description": "Secure encrypt and decrypt string/data using AES-256-GCM for node.js",
     "repository": {
         "type": "git",
