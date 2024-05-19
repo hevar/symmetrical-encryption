@@ -53,7 +53,7 @@
         "README.md"
     ],
     "scripts": {
-        "build": "tsup",
+        "build": "tsup src/index.ts --dts --minify --format cjs,esm",
         "dev": "tsup --watch",
         "format": "prettier --write .",
         "eslint": "eslint src/ tests/",
