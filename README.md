@@ -94,3 +94,9 @@ type ValidEncodings = "hex" | "base64" | "latin1"
 
 ## License
 MIT
+
+## Creating new releases
+- `npx changeset`
+- `npx changeset version`
+- commit changes to master - it will automatically create a new tag, changelog, and publish to npm
+
