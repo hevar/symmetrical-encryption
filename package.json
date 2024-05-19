@@ -1,6 +1,6 @@
 {
     "name": "symmetrical-encryption",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Secure encrypt and decrypt string/data using AES-256-GCM for node.js",
     "repository": {
         "type": "git",
@@ -53,7 +53,7 @@
         "README.md"
     ],
     "scripts": {
-        "build": "tsup src/index.ts --dts --minify --format cjs,esm",
+        "build": "tsup",
         "dev": "tsup --watch",
         "format": "prettier --write .",
         "eslint": "eslint src/ tests/",
@@ -63,7 +63,7 @@
         "test": "vitest run",
         "test:coverage": "vitest run --coverage",
         "test:watch": "vitest watch",
-        "release": "pnpm run build && changeset publish"
+        "release": "NODE_ENV=production pnpm run build && changeset publish"
     },
     "devDependencies": {
         "@changesets/cli": "^2.27.1",
