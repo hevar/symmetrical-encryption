@@ -1,5 +1,11 @@
 # symmetrical-encryption
 
+## 1.0.6
+
+### Patch Changes
+
+- doc to satisfy jsr
+
 ## 1.0.5
 
 ### Patch Changes

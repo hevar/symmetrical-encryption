@@ -1,5 +1,8 @@
 import crypto from "crypto"
 
+/**
+ * Valid encodings for the encrypted data. Default is "base64".
+ */
 export type ValidEncodings = "hex" | "base64" | "latin1"
 
 //test
