@@ -1,5 +1,5 @@
 {
-    "name": "@hev/symmetrical-encryption",
+    "name": "@hevar/symmetrical-encryption",
     "version": "1.0.5",
     "exports": "./src/index.ts",
     "publish": {
