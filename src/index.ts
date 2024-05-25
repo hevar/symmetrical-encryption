@@ -12,6 +12,13 @@ const saltLength = 64 // Length of the salt in bytes
 const keyLength = 32 // Length of the key in bytes (for aes-256-gcm)
 const encodingSeparator = ":" // Separator for encoding and encrypted data
 
+/**
+ * This function encrypts the data using the secretKey and returns the encrypted data
+ * @param data // The data to encrypt
+ * @param secretKey // The secret key to encrypt the data
+ * @param options // Optional parameter to specify the encoding of the encrypted data.
+ * Valid values are "hex", "base64", and "latin1". Default is "base64"
+ */
 export const encrypt = (data: string, secretKey: string, options?: { encoding: ValidEncodings }): string => {
     if (!data || typeof data !== "string" || !secretKey || typeof secretKey !== "string") {
         throw new Error("[symmetrical-encryption] data and secretKey must be non-empty strings")
@@ -30,6 +37,12 @@ export const encrypt = (data: string, secretKey: string, options?: { encoding: V
     return `${encoding}${encodingSeparator}${result}`
 }
 
+/**
+ * This function decrypts the data using the secretKey and returns the decrypted data.
+ * @param data // The encrypted data
+ * @param secretKey // The secret key to decrypt the data.
+ * Must be the same key as the one used for encryption.
+ */
 export const decrypt = (data: string, secretKey: string): string => {
     if (!data || typeof data !== "string" || !secretKey || typeof secretKey !== "string") {
         throw new Error("[symmetrical-encryption] data and secretKey must be non-empty strings")

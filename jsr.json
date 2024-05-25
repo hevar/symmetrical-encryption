@@ -1,5 +1,9 @@
 {
     "name": "@hev/symmetrical-encryption",
     "version": "1.0.3",
-    "exports": "./src/index.ts"
+    "exports": "./src/index.ts",
+    "publish": {
+        "include": ["LICENSE", "README.md", "src/**/*.ts"],
+        "exclude": ["/tests"]
+    }
 }
