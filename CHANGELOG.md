@@ -1,5 +1,11 @@
 # symmetrical-encryption
 
+## 1.0.9
+
+### Patch Changes
+
+- eslint config
+
 ## 1.0.8
 
 ### Patch Changes
