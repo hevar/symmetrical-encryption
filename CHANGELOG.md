@@ -1,5 +1,11 @@
 # symmetrical-encryption
 
+## 1.0.8
+
+### Patch Changes
+
+- dist folder
+
 ## 1.0.6
 
 ### Patch Changes
