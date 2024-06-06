@@ -51,19 +51,28 @@ export const decrypt = (data: string, secretKey: string): string => {
         throw new Error("[symmetrical-encryption] data and secretKey must be non-empty strings")
     }
 
-    const encodingIndex = data.indexOf(encodingSeparator)
-    const encoding = data.substring(0, encodingIndex) as ValidEncodings
-    const encryptedData = data.substring(encodingIndex + 1)
+    try {
+        const encodingIndex = data.indexOf(encodingSeparator)
+        const encoding = data.substring(0, encodingIndex) as ValidEncodings
+        const encryptedData = data.substring(encodingIndex + 1)
 
-    const rawData = Buffer.from(encryptedData, encoding)
-    const salt = rawData.subarray(0, saltLength)
-    const iv = rawData.subarray(saltLength, saltLength + ivLength)
-    const authTagIndex = saltLength + ivLength
-    const authTag = rawData.subarray(authTagIndex, authTagIndex + tagLength)
-    const encryptedText = rawData.subarray(authTagIndex + tagLength)
-    const key = crypto.scryptSync(secretKey, salt, keyLength)
-    const decipher = crypto.createDecipheriv(algorithm, key, iv)
-    decipher.setAuthTag(authTag)
+        const rawData = Buffer.from(encryptedData, encoding)
+        const salt = rawData.subarray(0, saltLength)
+        const iv = rawData.subarray(saltLength, saltLength + ivLength)
+        const authTagIndex = saltLength + ivLength
+        const authTag = rawData.subarray(authTagIndex, authTagIndex + tagLength)
+        const encryptedText = rawData.subarray(authTagIndex + tagLength)
+        const key = crypto.scryptSync(secretKey, salt, keyLength)
+        const decipher = crypto.createDecipheriv(algorithm, key, iv)
+        decipher.setAuthTag(authTag)
 
-    return decipher.update(encryptedText) + decipher.final("utf8")
+        return decipher.update(encryptedText) + decipher.final("utf8")
+        // eslint-disable-next-line
+    } catch (error: any) {
+        if (error?.message === "Unsupported state or unable to authenticate data") {
+            throw new Error(`[symmetrical-encryption] Invalid secret key or corrupted data`)
+        } else {
+            throw new Error(`[symmetrical-encryption] Unexpected error: ${error?.message}`)
+        }
+    }
 }

@@ -55,4 +55,23 @@ describe("AES-256-GCM Encryption and Decryption", () => {
         expect(badDataCall).toThrowError() // Adjust based on your specific error handling
         expect(badKeyCall).toThrowError() // Adjust based on your specific error handling
     })
+
+    it("should throw error with a helpful message if secret is incorrect", () => {
+        const data = {
+            id: 123,
+            username: "TestUser",
+        }
+
+        const jsonData = JSON.stringify(data)
+
+        const correctSecretEncrypted = encrypt(jsonData, "correctSecret")
+        const correctSecretDecrypted = decrypt(correctSecretEncrypted, "correctSecret")
+        const wrongSecretDecrypted = () => decrypt(correctSecretEncrypted, "wrongSecret")
+
+        expect(JSON.parse(correctSecretDecrypted)).toStrictEqual(data)
+
+        expect(wrongSecretDecrypted).toThrowError(
+            new Error("[symmetrical-encryption] Invalid secret key or corrupted data"),
+        )
+    })
 })
